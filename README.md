@@ -18,3 +18,4 @@ Props:
 * **background** - String, Traffic light background color
 * **boxShadow** - String, Traffic light box shadow
 * **color** - String, icon color on hover
+* **minimizeOnClose** - Bool, overwrite close behavior with minimize

@@ -2,7 +2,7 @@ import React from 'react'
 import reactCSS, { handleHover } from 'reactcss'
 import { remote } from 'electron'
 
-export const TrafficLights = ({ background, color, boxShadow, hover }) => {
+export const TrafficLights = ({ background, color, boxShadow, hover, minimizeOnClose }) => {
   const styles = reactCSS({
     'default': {
       traffic: {
@@ -33,7 +33,7 @@ export const TrafficLights = ({ background, color, boxShadow, hover }) => {
   }, { hover })
 
   const electron = remote.getCurrentWindow()
-  const handleClose = () => electron.close()
+  const handleClose = () => (minimizeOnClose ? electron.minimize() : electron.close())
   const handleMin = () => electron.minimize()
   const handleMax = () => electron.setFullScreen(!electron.isFullScreen())
 
@@ -62,6 +62,7 @@ TrafficLights.defaultProps = {
   background: '#909095',
   color: '#27272C',
   boxShadow: 'inset 0 0 0 0.5px rgba(0,0,0,0.3)',
+  minimizeOnClose: false,
 }
 
 export default handleHover(TrafficLights)
